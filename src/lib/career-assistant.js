@@ -44,7 +44,7 @@ export async function answerCareerQuestion({ content, latestAnalysis, profile })
   }
 
   if (query.includes("profile")) {
-    return `Your profile is stored locally in this self-hosted app.${profile?.target_role ? ` Your current target role is **${profile.target_role}**.` : ""}\n\nKeeping your summary, skills, and links updated will improve the generated resume output.`;
+    return `Your HireForge profile is available for resume generation.${profile?.target_role ? ` Your current target role is **${profile.target_role}**.` : ""}\n\nKeeping your summary, skills, and links updated will improve the generated resume output.`;
   }
 
   return "I can help with resume improvements, ATS explanations, interview preparation, skills gaps, and profile guidance. Ask me about any of those and I will use your locally saved data.";

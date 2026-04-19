@@ -114,8 +114,8 @@ export default function ChatBot() {
                   <Sparkles className="w-4 h-4 text-primary-foreground" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold">CareerCanvas Assistant</p>
-                  <p className="text-xs text-muted-foreground">Local guidance for your workspace</p>
+                  <p className="text-sm font-semibold">HireForge Assistant</p>
+                  <p className="text-xs text-muted-foreground">Guidance for your workspace</p>
                 </div>
               </div>
               <button
@@ -134,9 +134,9 @@ export default function ChatBot() {
                       <Sparkles className="w-3.5 h-3.5 text-primary-foreground" />
                     </div>
                     <div className="bg-secondary rounded-2xl rounded-tl-sm px-3.5 py-2.5 text-sm">
-                      <p>Hi! I'm your CareerCanvas assistant.</p>
+                      <p>Hi! I'm your HireForge assistant.</p>
                       <p className="mt-1 text-muted-foreground text-xs">
-                        I can help you improve your resume, prep for interviews, or explain the data saved in this self-hosted app.
+                        I can help you improve your resume, prep for interviews, or explain the data saved in HireForge.
                       </p>
                     </div>
                   </div>

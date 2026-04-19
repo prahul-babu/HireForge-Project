@@ -31,7 +31,7 @@ export default function Dashboard() {
   if (!latest && checkIns.length === 0) {
     return (
       <div>
-        <PageHeader title="Welcome to CareerCanvas" description="Your self-hosted career growth workspace" />
+        <PageHeader title="Welcome to HireForge" description="Your personal career growth workspace" />
         <EmptyState
           icon={Sparkles}
           title="Get Started"

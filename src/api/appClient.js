@@ -1,6 +1,15 @@
 import { answerCareerQuestion } from "@/lib/career-assistant";
 import { createAnalysis, createWellnessEntry, getProfile, listAnalyses, listWellnessEntries, updateProfile } from "@/lib/local-store";
 import { buildResumeAnalysis } from "@/lib/resume-engine";
+import {
+  createRemoteAnalysis,
+  createRemoteWellnessEntry,
+  getRemoteProfile,
+  listRemoteAnalyses,
+  listRemoteWellnessEntries,
+  updateRemoteProfile
+} from "@/lib/supabase-store";
+import { isSupabaseConfigured } from "@/lib/supabase-client";
 
 async function readFileText(file) {
   if (!file) {
@@ -22,11 +31,11 @@ async function readFileText(file) {
 
 export const appClient = {
   profile: {
-    get: () => getProfile(),
-    update: (data) => updateProfile(data)
+    get: () => (isSupabaseConfigured ? getRemoteProfile() : getProfile()),
+    update: (data) => (isSupabaseConfigured ? updateRemoteProfile(data) : updateProfile(data))
   },
   analyses: {
-    list: (sort, limit) => listAnalyses(sort, limit),
+    list: (sort, limit) => (isSupabaseConfigured ? listRemoteAnalyses(limit) : listAnalyses(sort, limit)),
     createFromResume: async ({ details, targetRole, resumeText, file }) => {
       const { text: fileText, supported } = await readFileText(file);
       const analysis = await buildResumeAnalysis({
@@ -37,7 +46,7 @@ export const appClient = {
         fileSupported: supported
       });
 
-      await updateProfile({
+      const profileUpdates = {
         full_name: details.full_name,
         email: details.email,
         phone: details.phone,
@@ -47,14 +56,20 @@ export const appClient = {
         github_username: details.github_username,
         summary: details.summary,
         target_role: targetRole
-      });
+      };
 
+      if (isSupabaseConfigured) {
+        await updateRemoteProfile(profileUpdates);
+        return createRemoteAnalysis(analysis);
+      }
+
+      await updateProfile(profileUpdates);
       return createAnalysis(analysis);
     }
   },
   wellness: {
-    list: (sort, limit) => listWellnessEntries(sort, limit),
-    create: (data) => createWellnessEntry(data)
+    list: (sort, limit) => (isSupabaseConfigured ? listRemoteWellnessEntries(limit) : listWellnessEntries(sort, limit)),
+    create: (data) => (isSupabaseConfigured ? createRemoteWellnessEntry(data) : createWellnessEntry(data))
   },
   assistant: {
     reply: async ({ content }) => {

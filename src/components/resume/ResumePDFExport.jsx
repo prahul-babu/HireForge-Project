@@ -104,7 +104,7 @@ export default function ResumePDFExport({ text, targetRole }) {
     const doc = new jsPDF({ unit: "mm", format: "a4" });
     const data = parseResume(text);
     generateClean(doc, data, selected);
-    const filename = `${(targetRole || "resume").replace(/[^a-z0-9]/gi, "_").toLowerCase()}_careercanvas.pdf`;
+    const filename = `${(targetRole || "resume").replace(/[^a-z0-9]/gi, "_").toLowerCase()}_hireforge.pdf`;
     doc.save(filename);
     setGenerating(false);
     setDone(true);

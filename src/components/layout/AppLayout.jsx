@@ -6,13 +6,13 @@ import Sidebar from "@/components/layout/Sidebar";
 export default function AppLayout() {
   const [collapsed, setCollapsed] = useState(window.innerWidth < 1024);
   const [darkMode, setDarkMode] = useState(() => {
-    const saved = localStorage.getItem("careercanvas-dark");
+    const saved = localStorage.getItem("hireforge-dark");
     return saved ? JSON.parse(saved) : false;
   });
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", darkMode);
-    localStorage.setItem("careercanvas-dark", JSON.stringify(darkMode));
+    localStorage.setItem("hireforge-dark", JSON.stringify(darkMode));
   }, [darkMode]);
 
   return (

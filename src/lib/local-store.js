@@ -1,7 +1,7 @@
 const STORAGE_KEYS = {
-  profile: "careercanvas.profile",
-  analyses: "careercanvas.analyses",
-  wellness: "careercanvas.wellness"
+  profile: "hireforge.profile",
+  analyses: "hireforge.analyses",
+  wellness: "hireforge.wellness"
 };
 
 export const DEFAULT_PROFILE = {

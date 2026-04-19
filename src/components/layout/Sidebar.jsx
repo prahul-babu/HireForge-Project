@@ -48,14 +48,14 @@ export default function Sidebar({ collapsed, onToggle, darkMode, onToggleDark })
           <div className="p-5 flex items-center gap-3">
             <img
               src="/brand-mark.svg"
-              alt="CareerCanvas"
+              alt="HireForge"
               className="w-10 h-10 rounded-xl object-contain bg-white p-0.5 shadow-sm border border-border"
             />
             <div>
               <h1 className="text-lg font-bold tracking-tight bg-gradient-to-r from-primary to-violet-500 bg-clip-text text-transparent">
-                CareerCanvas
+                HireForge
               </h1>
-              <p className="text-xs text-muted-foreground">Self-hosted career workspace</p>
+              <p className="text-xs text-muted-foreground">Career growth workspace</p>
             </div>
           </div>
 
@@ -98,7 +98,7 @@ export default function Sidebar({ collapsed, onToggle, darkMode, onToggleDark })
               {darkMode ? "Light Mode" : "Dark Mode"}
             </button>
             <div className="px-3 py-2 text-xs text-muted-foreground">
-              Data is stored in your browser for this self-hosted build.
+              Connect Supabase to sync your data across devices.
             </div>
           </div>
         </div>
